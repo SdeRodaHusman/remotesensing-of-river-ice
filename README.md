@@ -20,7 +20,7 @@ Tutorial
 The overall analysis and classification is performed in a number of steps, starting with the download of all required datasets, such as:
 
 * Synthetic Aperture RADAR data, aqcuired during river breakup (for example; Sentinel-1, via https://scihub.copernicus.eu/)
-* Outline of river of interest (outines of the Peace River and Athabasca River can be found in Data/OutlinePeaceRiver and Data/OutlineAthabascaRiver)
+* Outline of river of interest (outines of the Peace River and Athabasca River can be found in Data/OutlinePeaceAthabascaRiver)
 
 The actual steps required for the analysis are quite time consuming and include:
 
