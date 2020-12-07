@@ -12,7 +12,7 @@ The repository contains scripts and models which can be used to perform a classi
 The scripts make use of:
   1) SNAP (version 7.0)
   2) QGIS (version 3.0)
-  3) Python Notebooks
+  3) Python (e.g. Spyder, Anaconda version 3.0)
 
 Tutorial
 ========
