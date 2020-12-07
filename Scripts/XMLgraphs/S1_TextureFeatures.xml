@@ -1,0 +1,214 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>P:\11204104-remote-sensing-river-ice\1_Data\MscThesis_Sophie\2_Data\S1_SLCraw\S1B_IW_SLC__1SDV_20190324T134521_20190324T134548_015497_01D094_0287.zip</file>
+    </parameters>
+  </node>
+  <node id="Apply-Orbit-File">
+    <operator>Apply-Orbit-File</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <orbitType>Sentinel Precise (Auto Download)</orbitType>
+      <polyDegree>3</polyDegree>
+      <continueOnFail>false</continueOnFail>
+    </parameters>
+  </node>
+  <node id="Calibration">
+    <operator>Calibration</operator>
+    <sources>
+      <sourceProduct refid="Apply-Orbit-File"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <auxFile>Latest Auxiliary File</auxFile>
+      <externalAuxFile/>
+      <outputImageInComplex>false</outputImageInComplex>
+      <outputImageScaleInDb>false</outputImageScaleInDb>
+      <createGammaBand>true</createGammaBand>
+      <createBetaBand>false</createBetaBand>
+      <selectedPolarisations>VV</selectedPolarisations>
+      <outputSigmaBand>false</outputSigmaBand>
+      <outputGammaBand>true</outputGammaBand>
+      <outputBetaBand>false</outputBetaBand>
+    </parameters>
+  </node>
+  <node id="TOPSAR-Deburst">
+    <operator>TOPSAR-Deburst</operator>
+    <sources>
+      <sourceProduct refid="Calibration"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <selectedPolarisations/>
+    </parameters>
+  </node>
+  <node id="Terrain-Correction">
+    <operator>Terrain-Correction</operator>
+    <sources>
+      <sourceProduct refid="TOPSAR-Deburst"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <demName>SRTM 3Sec</demName>
+      <externalDEMFile/>
+      <externalDEMNoDataValue>0.0</externalDEMNoDataValue>
+      <externalDEMApplyEGM>true</externalDEMApplyEGM>
+      <demResamplingMethod>BILINEAR_INTERPOLATION</demResamplingMethod>
+      <imgResamplingMethod>BILINEAR_INTERPOLATION</imgResamplingMethod>
+      <pixelSpacingInMeter>13.88</pixelSpacingInMeter>
+      <pixelSpacingInDegree>1.246861614357896E-4</pixelSpacingInDegree>
+      <mapProjection>GEOGCS[&quot;WGS84(DD)&quot;, &#xd;
+  DATUM[&quot;WGS84&quot;, &#xd;
+    SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]], &#xd;
+  PRIMEM[&quot;Greenwich&quot;, 0.0], &#xd;
+  UNIT[&quot;degree&quot;, 0.017453292519943295], &#xd;
+  AXIS[&quot;Geodetic longitude&quot;, EAST], &#xd;
+  AXIS[&quot;Geodetic latitude&quot;, NORTH]]</mapProjection>
+      <alignToStandardGrid>false</alignToStandardGrid>
+      <standardGridOriginX>0.0</standardGridOriginX>
+      <standardGridOriginY>0.0</standardGridOriginY>
+      <nodataValueAtSea>true</nodataValueAtSea>
+      <saveDEM>false</saveDEM>
+      <saveLatLon>false</saveLatLon>
+      <saveIncidenceAngleFromEllipsoid>false</saveIncidenceAngleFromEllipsoid>
+      <saveLocalIncidenceAngle>false</saveLocalIncidenceAngle>
+      <saveProjectedLocalIncidenceAngle>false</saveProjectedLocalIncidenceAngle>
+      <saveSelectedSourceBand>true</saveSelectedSourceBand>
+      <outputComplex>false</outputComplex>
+      <applyRadiometricNormalization>false</applyRadiometricNormalization>
+      <saveSigmaNought>false</saveSigmaNought>
+      <saveGammaNought>false</saveGammaNought>
+      <saveBetaNought>false</saveBetaNought>
+      <incidenceAngleForSigma0>Use projected local incidence angle from DEM</incidenceAngleForSigma0>
+      <incidenceAngleForGamma0>Use projected local incidence angle from DEM</incidenceAngleForGamma0>
+      <auxFile>Latest Auxiliary File</auxFile>
+      <externalAuxFile/>
+    </parameters>
+  </node>
+  <node id="LinearToFromdB">
+    <operator>LinearToFromdB</operator>
+    <sources>
+      <sourceProduct refid="Terrain-Correction"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+    </parameters>
+  </node>
+  <node id="Import-Vector">
+    <operator>Import-Vector</operator>
+    <sources>
+      <sourceProduct refid="GLCM"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <vectorFile>P:\11204104-remote-sensing-river-ice\4_Shapefiles\WaterMasks\WaterMask_PeaceAthabasca_exactarea\WaterMask_PeaceAthabasca_exactarea.shp</vectorFile>
+      <separateShapes>true</separateShapes>
+    </parameters>
+  </node>
+  <node id="Land-Sea-Mask">
+    <operator>Land-Sea-Mask</operator>
+    <sources>
+      <sourceProduct refid="Import-Vector"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <landMask>false</landMask>
+      <useSRTM>true</useSRTM>
+      <geometry>WaterMask_PeaceAthabasca_exactarea_1</geometry>
+      <invertGeometry>false</invertGeometry>
+      <shorelineExtension>0</shorelineExtension>
+    </parameters>
+  </node>
+  <node id="BandMaths">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="LinearToFromdB"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>norm</name>
+          <type>float32</type>
+          <expression>round( 65535* (Gamma0_VV_db + 50) / 75)</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="GLCM">
+    <operator>GLCM</operator>
+    <sources>
+      <sourceProduct refid="BandMaths"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands>norm</sourceBands>
+      <windowSizeStr>11x11</windowSizeStr>
+      <angleStr>ALL</angleStr>
+      <quantizerStr>Probabilistic Quantizer</quantizerStr>
+      <quantizationLevelsStr>16</quantizationLevelsStr>
+      <displacement>1</displacement>
+      <outputContrast>false</outputContrast>
+      <outputDissimilarity>false</outputDissimilarity>
+      <outputHomogeneity>false</outputHomogeneity>
+      <outputASM>false</outputASM>
+      <outputEnergy>false</outputEnergy>
+      <outputMAX>false</outputMAX>
+      <outputEntropy>false</outputEntropy>
+      <outputMean>true</outputMean>
+      <outputVariance>true</outputVariance>
+      <outputCorrelation>true</outputCorrelation>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Land-Sea-Mask"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>P:\11204104-remote-sensing-river-ice\1_Data\MscThesis_Sophie\2_Data\S1_SLCpreprocessed\GLCM\S1B_IW_SLC__1SDV_20190324T134521_20190324T134548_015497_01D094_0287_Orb_Cal_Deb_TC_dB_BandMath_GLCM.nc</file>
+      <formatName>NetCDF4-CF</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="196.0" y="33.0"/>
+    </node>
+    <node id="Apply-Orbit-File">
+      <displayPosition x="200.0" y="74.0"/>
+    </node>
+    <node id="Calibration">
+      <displayPosition x="220.0" y="111.0"/>
+    </node>
+    <node id="TOPSAR-Deburst">
+      <displayPosition x="200.0" y="142.0"/>
+    </node>
+    <node id="Terrain-Correction">
+      <displayPosition x="200.0" y="179.0"/>
+    </node>
+    <node id="LinearToFromdB">
+      <displayPosition x="204.0" y="216.0"/>
+    </node>
+    <node id="Import-Vector">
+      <displayPosition x="217.0" y="341.0"/>
+    </node>
+    <node id="Land-Sea-Mask">
+      <displayPosition x="210.0" y="380.0"/>
+    </node>
+    <node id="BandMaths">
+      <displayPosition x="210.0" y="263.0"/>
+    </node>
+    <node id="GLCM">
+      <displayPosition x="222.0" y="303.0"/>
+    </node>
+    <node id="Write">
+      <displayPosition x="227.0" y="412.0"/>
+    </node>
+  </applicationData>
+</graph>
