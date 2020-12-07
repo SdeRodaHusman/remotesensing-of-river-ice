@@ -1,5 +1,4 @@
 # remotesensing-of-river-ice
-Classify river ice using SAR data
 
 This repository provides material used for the paper: <add a link here>
 
@@ -37,8 +36,6 @@ The actual steps required for the analysis are quite time consuming and include:
 
 6. Compute the appropriate hyperparameters for the Random Forest model (Scripts/PythonScripts/Hyperparameters.py) using validation curves.
 
-7. Create classification maps for preprocessed SAR images (Scripts/PythonScripts/ClassificationMaps.py)
+7. Create classification maps for preprocessed SAR images (Scripts/PythonScripts/ClassificationMaps.py).
 
-6. Prepare regular grid file (grid.kml) and upload to Google Fusion Table, the resulting asset id needs to be updated in the OSM_automatic_NDWI.js script
-
-10. Assess the accuracy of the developed classifier (Scripts/PythonScripts/AccuracyAssessment.py). Optional: compare whether a combination of features performs significantly better than another combination (Scripts/PythonScripts/HypothesisTesting.py)
+8. Assess the accuracy of the developed classifier (Scripts/PythonScripts/AccuracyAssessment.py). Optional: compare whether a combination of features performs significantly better than another combination (Scripts/PythonScripts/HypothesisTesting.py).
