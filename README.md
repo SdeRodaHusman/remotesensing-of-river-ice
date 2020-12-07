@@ -7,7 +7,7 @@ Overview
 
 River ice during breakup can be classified using the generic Random Forest classifier, which was trained for the Athabasca River, Alberta using Sentinel-1 SAR data (RFmodel/S1_RFmodel_AthabascaRiver.sav). Another option is to train a Random Forest model based on new training data. The tutorial to do so is provided below. 
 
-The repository contains scripts and Python Notebooks which can be used to perform a classify river ice (rubble ice, sheet ice, open water) during breakup using SAR data.
+The repository contains scripts and models which can be used to perform a classify river ice (rubble ice, sheet ice, open water) during breakup using SAR data.
 
 The scripts make use of:
   1) SNAP (version 7.0)
