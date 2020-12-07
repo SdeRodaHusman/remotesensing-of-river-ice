@@ -17,10 +17,11 @@ The scripts make use of:
 Tutorial
 ========
 
-The overall analysis is performed in a number of steps, starting with the download of all required datasets, such as:
+The overall analysis and classification is performed in a number of steps, starting with the download of all required datasets, such as:
 
 * Synthetic Aperture RADAR data, aqcuired during river breakup (for example; Sentinel-1, via https://scihub.copernicus.eu/)
 * Outline of river of interest (outines of the Peace River and Athabasca River can be found in Data/OutlinePeaceRiver and Data/OutlineAthabascaRiver)
+
 The actual steps required for the analysis are quite time consuming and include:
 
 1. Preprocess the raw SAR data (Scipts/XLMgraphs/...)
