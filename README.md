@@ -24,7 +24,7 @@ The overall analysis and classification is performed in a number of steps, start
 
 The actual steps required for the analysis are quite time consuming and include:
 
-1. Preprocess the raw SAR data (Scipts/XLMgraphs/...)
+1. Preprocess the raw SAR data (Scripts/XLMgraphs/...)
       Produces preprocessed NetCDF files for (1) intensity, (2) polarimetric and (3) texture features. XML graphs can be used in SNAP or using the provided GPT script    (Scripts/GPT.bat)
 
 2. Load the preprocessed NetCDFs in QGIS and create sample areas from which the ice stage is known. It is recommended to create a total of 70 sample areas from 100 pixels each, for all ice stage (rubble ice, sheet ice and open water) of interest. Hence, 210 sample areas (or 21000 pixels) will be created. 
