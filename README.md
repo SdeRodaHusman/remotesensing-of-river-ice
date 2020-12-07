@@ -1,6 +1,6 @@
 # remotesensing-of-river-ice
 
-This repository provides material used for the paper: <add a link here>
+This repository provides material used for the paper: <add a link here> ...
 
 Overview
 ========
