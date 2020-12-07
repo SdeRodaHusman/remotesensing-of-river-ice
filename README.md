@@ -3,6 +3,8 @@ Classify river ice using SAR data
 
 This repository provides material used for the paper: <add a link here>
 
+River ice during breakup can be classified using the generic Random Forest classifier, which was trained for the Athabasca River, Alberta using Sentinel-1 SAR data (RFmodel/S1_RFmodel_AthabascaRiver.sav). Another option is to train a Random Forest model based on new training data. The tutorial to do so is provided below. 
+
 Overview
 ========
 
@@ -19,16 +21,15 @@ Tutorial
 The overall analysis is performed in a number of steps, starting with the download of all required datasets, such as:
 
 * Synthetic Aperture RADAR data, aqcuired during river breakup (for example; Sentinel-1, via https://scihub.copernicus.eu/)
-* Outline of river
 
 The actual steps required for the analysis are quite time consuming and include:
 
-1. Preprocess the SAR images in SNAP (scripts/convert.cmd)
-      Produces two shapefiles (polylines and polygons) representing hydrography
+1. Preprocess the raw SAR data (Scipts/XLMgraphs/...)
+      Produces preprocessed NetCDF files for (1) intensity, (2) polarimetric and (3) texture features. XML graphs can be used in SNAP or using the provided GPT script    (Scripts/GPT.bat)
 
-2. Split linear hydrography features into small polylines in order to perform the analysis (notebooks/ExplodeShpPolylines.ipynb)
+2. Load the preprocessed NetCDFs in QGIS and create sample areas from which the ice stage is known. It is recommended to create a total of 70 sample areas (50 for training, 20 for validation) from 100 pixels each, for all ice stage (rubble ice, sheet ice and open water) of interest. Hence, 210 sample areas (or 21000 pixels) will be created. 
 
-3. Upload results of 2. to Google Fusion Table (UploadToFusionTable.ipynb)
+3. Extract feature values for all sample pixels, use .csv as output. This can be done in QGIS (Scripts/QGISmodels/ExtractFeatureValues.model3). 
 
 4. Select required catchment boundaries from HydroBASINS. Catchment size should be smaller than current Google Earth Engine download limit!
 
