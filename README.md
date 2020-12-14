@@ -14,6 +14,9 @@ The scripts make use of:
   2) QGIS (version 3.0)
   3) Python (e.g. Spyder, Anaconda version 3.0)
 
+![alt text](https://github.com/SdeRodaHusman/remotesensing-of-river-ice/blob/main/Figures/Roadmap_RFmodel.jpg?raw=true)
+
+
 Tutorial
 ========
 
