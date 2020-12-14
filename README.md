@@ -18,7 +18,7 @@ There are two paths in this tutorial that can be followed to perform classificat
 
 The steps needed for the first and second paths are described below.
 
-![alt text](https://github.com/SdeRodaHusman/remotesensing-of-river-ice/blob/main/Figures/Roadmap_RFmodel.jpg?raw=true)
+![alt text](https://github.com/SdeRodaHusman/remotesensing-of-river-ice/blob/main/Figures/Roadmap_RemoteSensingofRiverIce.jpg?raw=true)
 
 
 Tutorial 1 - Generic approach
