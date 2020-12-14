@@ -21,7 +21,7 @@ The steps needed for the first and second path are described below.
 ![alt text](https://github.com/SdeRodaHusman/remotesensing-of-river-ice/blob/main/Figures/Roadmap_RFmodel.jpg?raw=true)
 
 
-Tutorial - Generic approach
+Tutorial 1 - Generic approach
 ========
 
 The overall analysis and classification are performed in a number of steps, starting with the download of all required datasets, such as:
@@ -53,7 +53,7 @@ Creates a NetCDF file in which all pixels are classified as sheet ice, rubble ic
 
 
 
-Tutorial - Build your own Random Forest classifier
+Tutorial 2 - Build your own Random Forest classifier
 ========
 
 The overall analysis and classification is performed in a number of steps, starting with the download of all required datasets, such as:
@@ -107,15 +107,3 @@ Compares two classifiers that make use of different features, based on the kappa
 Step 11. **Save the developed classifier** *(Scripts/PythonScripts/SaveRFmodel.py)* 
 
 The developed classifier can be saved as SAV file. All decisions made in the model are included in this file. Now you can classify a SAR image during breakup. To do so, start with step 1 of the *Generic approach* (see the tutorial descibed above). 
-
-
-
-4. Split the extracted sample areas randomly for each ice stage: 50 for training, 20 for validation.
-
-5. Select the optimal, non-correlated features (Scripts/PythonScripts/FeatureSelection.py).
-
-6. Compute the appropriate hyperparameters for the Random Forest model (Scripts/PythonScripts/Hyperparameters.py) using validation curves.
-
-7. Create classification maps for preprocessed SAR images (Scripts/PythonScripts/ClassificationMaps.py).
-
-8. Assess the accuracy of the developed classifier (Scripts/PythonScripts/AccuracyAssessment.py). Optional: compare whether a combination of features performs significantly better than another combination (Scripts/PythonScripts/HypothesisTesting.py).
