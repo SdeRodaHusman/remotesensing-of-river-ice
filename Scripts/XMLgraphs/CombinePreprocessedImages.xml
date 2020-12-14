@@ -1,0 +1,49 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Collocate">
+    <operator>Collocate</operator>
+    <sources>
+      <sourceProduct.3 refid="ProductSet-Reader"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceProductPaths/>
+      <masterProductName>S1_intensity.nc</masterProductName>
+      <targetProductName>S1_polarimetric.nc,S1_texture.nc</targetProductName>
+      <targetProductType>COLLOCATED</targetProductType>
+      <renameMasterComponents>true</renameMasterComponents>
+      <renameSlaveComponents>true</renameSlaveComponents>
+      <masterComponentPattern>${ORIGINAL_NAME}_M</masterComponentPattern>
+      <slaveComponentPattern>${ORIGINAL_NAME}_S${SLAVE_NUMBER_ID}</slaveComponentPattern>
+      <resamplingType>NEAREST_NEIGHBOUR</resamplingType>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Collocate"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>Output_file_location\CombinedPreprocessedImages.nc</file>
+      <formatName>NetCDF4-CF</formatName>
+    </parameters>
+  </node>
+  <node id="ProductSet-Reader">
+    <operator>ProductSet-Reader</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <fileList>S1_intensity.nc,S1_polarimetric.nc,S1_texture.nc</fileList>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Collocate">
+      <displayPosition x="415.0" y="155.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="408.0" y="211.0"/>
+    </node>
+    <node id="ProductSet-Reader">
+      <displayPosition x="399.0" y="113.0"/>
+    </node>
+  </applicationData>
+</graph>
