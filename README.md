@@ -13,8 +13,8 @@ The scripts make use of:
   3) Python (e.g. Spyder, Anaconda version 3.0)
 
 There are two paths in this tutorial that can be used for classification (also see the figure below), namely:
-- Option 1: Generic approach (use the developed classifier presented in the paper, which was trained for the Athabasca River, Alberta using Sentinel-1 SAR data)
-- Option 2: Build your own Random Forest classifier 
+- **Option 1:** Generic approach (use the developed classifier presented in the paper, which was trained for the Athabasca River, Alberta using Sentinel-1 SAR data)
+- **Option 2:** Build your own Random Forest classifier 
 
 The steps needed for the first and second path are described below.
 
@@ -32,6 +32,7 @@ The overall analysis and classification is performed in a number of steps, start
 The actual steps required for the analysis are quite time consuming and include:
 
 1. **Download Sentinel-1 SLC SAR images**
+
 Download SAR images that you would like to classify, for example via https://scihub.copernicus.eu/)
 
 2. **Preprocess Senitnel-1 SLC SAR images** *(Scripts/XLMgraphs/S1_Intensity.xml, Scripts/XLMgraphs/S1_Texture.xml)*
