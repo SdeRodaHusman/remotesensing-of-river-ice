@@ -1,6 +1,6 @@
 # remotesensing-of-river-ice
 
-This repository provides material used for the paper: <add a link here> ...
+This repository provides material used for the paper: [Integrating intensity and context for improved supervised river ice classification from dual-pol Sentinel-1 SAR data, by S. de Roda Husman et al. (2021)](https://www.sciencedirect.com/science/article/pii/S0303243421000660). 
 
 Overview
 ========
